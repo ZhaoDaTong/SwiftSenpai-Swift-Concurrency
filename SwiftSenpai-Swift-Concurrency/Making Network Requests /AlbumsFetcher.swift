@@ -14,7 +14,7 @@ struct ITunesResult: Codable {
 struct Album: Codable, Hashable {
     let collectionId: Int
     let collectionName: String
-    let collectionPrice: Double
+    let collectionPrice: Double?
 }
 
 struct AlbumsFetcher {

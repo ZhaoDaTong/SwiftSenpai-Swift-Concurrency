@@ -21,7 +21,7 @@ class FetchAlbumsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        // Configure collection view
+        // Configure collection view, iOS 14+
         let layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
         collectionView.collectionViewLayout = listLayout
@@ -32,8 +32,9 @@ class FetchAlbumsViewController: UIViewController {
             // Setup content configuration
             var content = cell.defaultContentConfiguration()
             content.text = album.collectionName
-            content.secondaryText = "USD \(album.collectionPrice)"
-            
+            if let price = album.collectionPrice {
+                content.secondaryText = "USD \(String(describing: price))"
+            }
             // Assign content configuration to cell
             cell.contentConfiguration = content
         }
